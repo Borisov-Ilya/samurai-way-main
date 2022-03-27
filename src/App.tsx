@@ -5,23 +5,29 @@ import {Navbar} from './components/Navbar/Navbar';
 import {Profile} from './components/Profile/Profile';
 import {Dialogs} from './components/Dialogs/Dialogs';
 import {Routes, Route} from 'react-router-dom';
-import {DialogType, MessageType, PostType} from './index'
+import {DialogType, MessageType, PostType} from './redux/state'
 
 type AppType = {
-    posts: Array<PostType>
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>
+    state: {
+        profilePage: {
+            posts: Array<PostType>
+        }
+        dialogsPage: {
+            dialogs: Array<DialogType>
+            messages: Array<MessageType>
+        }
+    }
 }
 
-export const App: React.FC<AppType> = ({posts, dialogs, messages}) => {
+export const App: React.FC<AppType> = ({state}) => {
     return (
         <div className='app-wrapper'>
             <Header/>
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route path='/dialogs' element={<Dialogs dialogs={dialogs} messages={messages}/>}/>
-                    <Route path='/profile' element={<Profile posts={posts}/>}/>
+                    <Route path='/dialogs' element={<Dialogs state={state.dialogsPage}/>}/>
+                    <Route path='/profile' element={<Profile state={state.profilePage}/>}/>
                 </Routes>
             </div>
         </div>
