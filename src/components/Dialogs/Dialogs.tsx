@@ -1,31 +1,7 @@
 import s from './Dialogs.module.css'
-import {NavLink} from 'react-router-dom'
 import React from 'react'
-
-type DialogItemType = {
-    id: string | number
-    name: string
-}
-// @ts-ignore
-const setActive = ({isActive}) => isActive ? s.activeLink : ''
-
-const DialogItem = (props: DialogItemType) => {
-    let path = '/dialogs/' + props.id
-
-    return (
-        <div className={s.dialog}>
-            <NavLink to={path} className={setActive}>{props.name}</NavLink>
-        </div>
-    )
-}
-
-type MessageType = {
-    message: string
-}
-
-const Message = (props: MessageType) => {
-    return <div className={s.message}>{props.message}</div>
-}
+import {DialogItem} from './DialogItem/Item'
+import {Message} from './Message/Message'
 
 export const Dialogs = () => {
     let dialogs = [
@@ -46,7 +22,7 @@ export const Dialogs = () => {
     ]
 
     let dialogsElements = dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
-    let messagesElements = messages.map(m => <DialogItem name={m.message} id={m.id}/>)
+    let messagesElements = messages.map(m => <Message message={m.message}/>)
 
     return (
         <div className={s.dialogs}>
