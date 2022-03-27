@@ -3,18 +3,18 @@ import {NavLink} from 'react-router-dom'
 import React from 'react'
 
 type DialogItemType = {
-    id: string | number
+    id: number
     name: string
 }
 // @ts-ignore
 const setActive = ({isActive}) => isActive ? s.activeLink : ''
 
-export const DialogItem = (props: DialogItemType) => {
-    let path = '/dialogs/' + props.id
+export const DialogItem: React.FC<DialogItemType> = ({id, name}) => {
+    let path = `/dialogs/${id}`
 
     return (
         <div className={s.dialog}>
-            <NavLink to={path} className={setActive}>{props.name}</NavLink>
+            <NavLink to={path} className={setActive}>{name}</NavLink>
         </div>
     )
 }

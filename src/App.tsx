@@ -5,16 +5,23 @@ import {Navbar} from './components/Navbar/Navbar';
 import {Profile} from './components/Profile/Profile';
 import {Dialogs} from './components/Dialogs/Dialogs';
 import {Routes, Route} from 'react-router-dom';
+import {DialogType, MessageType, PostType} from './index'
 
-export const App = () => {
+type AppType = {
+    posts: Array<PostType>
+    dialogs: Array<DialogType>
+    messages: Array<MessageType>
+}
+
+export const App: React.FC<AppType> = ({posts, dialogs, messages}) => {
     return (
         <div className='app-wrapper'>
             <Header/>
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route path='/dialogs' element={<Dialogs/>}/>
-                    <Route path='/profile' element={<Profile/>}/>
+                    <Route path='/dialogs' element={<Dialogs dialogs={dialogs} messages={messages}/>}/>
+                    <Route path='/profile' element={<Profile posts={posts}/>}/>
                 </Routes>
             </div>
         </div>
