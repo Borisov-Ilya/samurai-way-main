@@ -5,18 +5,10 @@ import {Navbar} from './components/Navbar/Navbar';
 import {Profile} from './components/Profile/Profile';
 import {Dialogs} from './components/Dialogs/Dialogs';
 import {Routes, Route} from 'react-router-dom';
-import {DialogType, MessageType, PostType} from './redux/state'
+import {RootStateType} from './redux/state'
 
 type AppType = {
-    state: {
-        profilePage: {
-            posts: Array<PostType>
-        }
-        dialogsPage: {
-            dialogs: Array<DialogType>
-            messages: Array<MessageType>
-        }
-    }
+    state: RootStateType
 }
 
 export const App: React.FC<AppType> = ({state}) => {
@@ -26,8 +18,8 @@ export const App: React.FC<AppType> = ({state}) => {
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route path='/dialogs' element={<Dialogs state={state.dialogsPage}/>}/>
-                    <Route path='/profile' element={<Profile state={state.profilePage}/>}/>
+                    <Route path='/dialogs' element={<Dialogs dialogsPage={state.dialogsPage}/>}/>
+                    <Route path='/profile' element={<Profile profilePage={state.profilePage}/>}/>
                 </Routes>
             </div>
         </div>

@@ -1,6 +1,6 @@
-import React from 'react';
-import s from './MyPosts.module.css';
-import {Post} from './Post/Post';
+import React from 'react'
+import s from './MyPosts.module.css'
+import {Post} from './Post/Post'
 import {PostType} from '../../../redux/state'
 
 
@@ -26,5 +26,5 @@ export const MyPosts: React.FC<MyPostsType> = (props) => {
                 {postsElements}
             </div>
         </div>
-    );
-};
+    )
+}

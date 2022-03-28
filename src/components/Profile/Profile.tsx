@@ -1,22 +1,20 @@
-import React from 'react';
-import s from './Profile.module.css';
-import {MyPosts} from './MyPosts/MyPosts';
-import {ProfileInfo} from './ProfileInfo/ProfileInfo';
-import {PostType} from '../../redux/state'
+import React from 'react'
+import s from './Profile.module.css'
+import {MyPosts} from './MyPosts/MyPosts'
+import {ProfileInfo} from './ProfileInfo/ProfileInfo'
+import {ProfilePageType} from '../../redux/state'
 
 
 type ProfileType = {
-    state: {
-        posts: Array<PostType>
-    }
+    profilePage: ProfilePageType
 }
 
-export const Profile: React.FC<ProfileType> = ({state}) => {
+export const Profile: React.FC<ProfileType> = ({profilePage}) => {
 
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={state.posts}/>
+            <MyPosts posts={profilePage.posts}/>
         </div>
-    );
-};
+    )
+}

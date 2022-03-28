@@ -1,9 +1,9 @@
-import React from 'react';
-import s from './Navbar.module.css';
-import {NavLink} from 'react-router-dom';
+import React from 'react'
+import s from './Navbar.module.css'
+import {NavLink} from 'react-router-dom'
 
 // @ts-ignore
-const setActive = ({isActive}) => isActive ? s.activeLink : '';
+const setActive = ({isActive}) => isActive ? s.activeLink : ''
 
 export const Navbar = () => {
     return (
@@ -24,5 +24,5 @@ export const Navbar = () => {
                 <NavLink to='/settings' className={setActive}>Settings</NavLink>
             </div>
         </nav>
-    );
-};
+    )
+}
